@@ -5,6 +5,7 @@ const authRoutes = require('./routes/authRoutes')
 const gameRoutes = require('./routes/gameRoutes');
 const userRoutes = require('./routes/userRoutes')
 const createSocketServer = require('./createSocketServer');
+const http = require('http');
 
 const corsOptions = {
     origin: '*',
@@ -22,15 +23,9 @@ app.use('/game', gameRoutes)
 app.use('/user', userRoutes)
 
 const PORT = process.env.PORT || 5060;
-// const SOCKETPORT = process.env.SOCKET_PORT || 3030
 
-const server = createSocketServer(app,corsOptions)
-
-app.listen(PORT, () => {
-    console.log(`Listening to the port ${PORT}...`)
-})
+const server = createSocketServer(app, corsOptions);
 
 server.listen(PORT, () => {
-  console.log(`Server listening on port ${SOCKETPORT}...`)
-})
-
+  console.log(`Server and sockets running on port ${PORT}...`);
+});
