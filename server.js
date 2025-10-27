@@ -22,7 +22,7 @@ app.use('/game', gameRoutes)
 app.use('/user', userRoutes)
 
 const PORT = process.env.PORT || 5060;
-const SOCKETPORT = process.env.SOCKET_PORT || 3030
+// const SOCKETPORT = process.env.SOCKET_PORT || 3030
 
 const server = createSocketServer(app,corsOptions)
 
@@ -30,7 +30,7 @@ app.listen(PORT, () => {
     console.log(`Listening to the port ${PORT}...`)
 })
 
-server.listen(SOCKETPORT, () => {
+server.listen(PORT, () => {
   console.log(`Server listening on port ${SOCKETPORT}...`)
 })
 
