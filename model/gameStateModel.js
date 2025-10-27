@@ -77,7 +77,8 @@ class GameState {
 		this.bulletDamage = 20
     this.damageScore = 20
     this.killScore = 100
-		this.respawnTimeout = 15 * 1000 // milliseconds
+    this.serverTickRate = 100 // milliseconds
+		this.respawnTimeout = 10 * 1000 // milliseconds
 		this.waitingMatchTimeout = 5 * 60 * 1000 // milliseconds
 		this.activeMatchTimeout = 7 * 60 * 1000 // milliseconds
 
@@ -120,7 +121,7 @@ class GameState {
           })
         }
       })
-    }, 100)  // server tick (10 - 20 ticks / s)
+    }, this.serverTickRate)  // server tick (10 - 20 ticks / s)
   }
 
   
@@ -421,7 +422,7 @@ class GameState {
     }
   }
 
-  updateMatchState(matchId) {                         //yet to test
+  updateMatchState(matchId) {                        
     const match = this.matches[matchId]
     if (!match || match.status !== 'active') return
 
