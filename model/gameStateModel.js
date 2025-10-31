@@ -78,7 +78,7 @@ class GameState {
     this.damageScore = 20
     this.killScore = 100
     this.serverTickRate = 100 // milliseconds
-		this.respawnTimeout = 10 * 1000 // milliseconds
+		this.respawnTimeout = 5 * 1000 // milliseconds
 		this.waitingMatchTimeout = 5 * 60 * 1000 // milliseconds
 		this.activeMatchTimeout = 7 * 60 * 1000 // milliseconds
 
@@ -102,7 +102,6 @@ class GameState {
         this.updateMatchState(matchId)
         if(this.matches[matchId].status !== 'waiting') {
           getIO().to(matchId).emit("stateUpdate", {
-            map: this.matches[matchId].map.arena,
             players: remapPlayersBySocketId(this.matches[matchId].players),
             bullets: this.matches[matchId].bullets,
             status: this.matches[matchId].status,
@@ -110,6 +109,7 @@ class GameState {
           })
         } else {
           getIO().to(matchId).emit("stateUpdate", {
+            map: this.matches[matchId].map.arena,
             spawnCount: this.matches[matchId].map.spawnCount,
             players: Object.values(this.matches[matchId].players).map(p => ({
               userName: p.userName,
@@ -492,6 +492,11 @@ class GameState {
             if (match.players[playerId]) {
               match.players[playerId].status = "alive"
               match.players[playerId].health = 100
+              match.players[playerId].spawnCount += 1
+              match.players[playerId] = randomSpawnAssigner(
+                { [playerId]: match.players[playerId] },
+                match.map.spawns
+              )[playerId]
               getIO().to(matchId).emit("stateUpdateInfo", {
                 message: `${player.userName} is respawned`
               })
