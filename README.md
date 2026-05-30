@@ -8,7 +8,7 @@ The frontend for this project can be found here: [Rithesh-S/Ratata\_frontend](ht
 
 -----
 
-## ✨ Features
+## Features
 
 ### Core Gameplay
 
@@ -33,7 +33,7 @@ The frontend for this project can be found here: [Rithesh-S/Ratata\_frontend](ht
 
 -----
 
-## 🛠️ Tech Stack
+## Tech Stack
 
   * **Runtime:** Node.js
   * **Server:** Express.js
@@ -45,7 +45,7 @@ The frontend for this project can be found here: [Rithesh-S/Ratata\_frontend](ht
 
 -----
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1\. Prerequisites
 
@@ -101,7 +101,7 @@ The server will be running on the port specified in your `.env` file.
 
 -----
 
-## 🔌 API Endpoints (REST)
+## API Endpoints (REST)
 
 All API routes are protected with JWT authentication unless specified otherwise.
 
@@ -150,7 +150,7 @@ All API routes are protected with JWT authentication unless specified otherwise.
 
 -----
 
-## 📡 Socket.IO Events
+## Socket.IO Events
 
 The server uses Socket.IO for all real-time game communication.
 
@@ -215,7 +215,7 @@ The server uses Socket.IO for all real-time game communication.
 
 -----
 
-## 🧠 Core Concepts
+## Core Concepts
 
 ### 1\. GameState Singleton
 
